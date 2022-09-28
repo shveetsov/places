@@ -14,63 +14,7 @@ class _SightListScreenState extends State<SightListScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: false,
-        title: RichText(
-          text: const TextSpan(
-            text: 'C',
-            style: TextStyle(
-              color: Color.fromRGBO(76, 175, 80, 1),
-              fontFamily: 'Roboto',
-              fontSize: 32,
-              fontWeight: FontWeight.w700,
-            ),
-            children: [
-              TextSpan(
-                text: 'писок\n',
-                style: TextStyle(
-                  color: Color.fromRGBO(37, 40, 73, 1),
-                  fontFamily: 'Roboto',
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                ),
-                children: [
-                  TextSpan(
-                    text: 'и',
-                    style: TextStyle(
-                      color: Color.fromRGBO(252, 221, 61, 1),
-                      fontFamily: 'Roboto',
-                      fontSize: 32,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: 'нтересных мест',
-                        style: TextStyle(
-                          color: Color.fromRGBO(37, 40, 73, 1),
-                          fontFamily: 'Roboto',
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        toolbarHeight: 100,
-        backgroundColor: Colors.white,
-        shadowColor: const Color.fromRGBO(255, 255, 255, 0),
-      ),
-      body: Center(
-        child: Text('Hello!'),
-      ),
-    );
-  }
-}
-
-/*
-const Text(
+        title: const Text(
           'Список\nинтересных мест',
           style: TextStyle(
             color: Color.fromRGBO(37, 40, 73, 1),
@@ -79,4 +23,14 @@ const Text(
             fontWeight: FontWeight.w700,
           ),
         ),
-*/
+        toolbarHeight: 100,
+        backgroundColor: Colors.white,
+        shadowColor: const Color.fromRGBO(255, 255, 255, 0),
+      ),
+      body: const Center(
+        child: Text('Hello!'),
+      ),
+    );
+  }
+}
+
