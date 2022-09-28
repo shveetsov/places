@@ -14,13 +14,48 @@ class _SightListScreenState extends State<SightListScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: false,
-        title: const Text(
-          'Список\nинтересных мест',
-          style: TextStyle(
-            color: Color.fromRGBO(37, 40, 73, 1),
-            fontFamily: 'Roboto',
-            fontSize: 32,
-            fontWeight: FontWeight.w700,
+        title: RichText(
+          text: const TextSpan(
+            text: 'C',
+            style: TextStyle(
+              color: Color.fromRGBO(76, 175, 80, 1),
+              fontFamily: 'Roboto',
+              fontSize: 32,
+              fontWeight: FontWeight.w700,
+            ),
+            children: [
+              TextSpan(
+                text: 'писок\n',
+                style: TextStyle(
+                  color: Color.fromRGBO(37, 40, 73, 1),
+                  fontFamily: 'Roboto',
+                  fontSize: 32,
+                  fontWeight: FontWeight.w700,
+                ),
+                children: [
+                  TextSpan(
+                    text: 'и',
+                    style: TextStyle(
+                      color: Color.fromRGBO(252, 221, 61, 1),
+                      fontFamily: 'Roboto',
+                      fontSize: 32,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: 'нтересных мест',
+                        style: TextStyle(
+                          color: Color.fromRGBO(37, 40, 73, 1),
+                          fontFamily: 'Roboto',
+                          fontSize: 32,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
         toolbarHeight: 100,
@@ -33,3 +68,15 @@ class _SightListScreenState extends State<SightListScreen> {
     );
   }
 }
+
+/*
+const Text(
+          'Список\nинтересных мест',
+          style: TextStyle(
+            color: Color.fromRGBO(37, 40, 73, 1),
+            fontFamily: 'Roboto',
+            fontSize: 32,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+*/
