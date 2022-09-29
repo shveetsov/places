@@ -8,21 +8,44 @@ class SightDetails extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image:
-                    NetworkImage('https://rocketsoft.pro/img-places/img-1.jpg'),
+          Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                        'https://rocketsoft.pro/img-places/img-1.jpg'),
+                  ),
+                  color: Color.fromRGBO(245, 245, 245, 1),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(10),
+                  ),
+                ),
               ),
-              color: Color.fromRGBO(245, 245, 245, 1),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12),
-                topRight: Radius.circular(12),
+              Positioned(
+                left: 16,
+                top: 36,
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(
+                      Icons.arrow_back_ios_outlined,
+                      size: 12,
+                    ),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
           const SizedBox(
             height: 24,
