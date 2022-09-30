@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:places/domain/sight.dart';
 
 class SightDetails extends StatelessWidget {
-  const SightDetails({Key? key}) : super(key: key);
+  final Sight sight;
+
+  const SightDetails({Key? key, required this.sight}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +16,13 @@ class SightDetails extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(
-                        'https://rocketsoft.pro/img-places/img-1.jpg'),
+                    image: NetworkImage(sight.url),
                   ),
-                  color: Color.fromRGBO(245, 245, 245, 1),
-                  borderRadius: BorderRadius.only(
+                  color: const Color.fromRGBO(245, 245, 245, 1),
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(10),
                   ),
@@ -55,9 +57,9 @@ class SightDetails extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Долина гейзеров',
-                  style: TextStyle(
+                Text(
+                  sight.name,
+                  style: const TextStyle(
                     fontFamily: 'Roboto',
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
@@ -68,20 +70,20 @@ class SightDetails extends StatelessWidget {
                   height: 2,
                 ),
                 Row(
-                  children: const [
+                  children: [
                     Text(
-                      'Природа',
-                      style: TextStyle(
+                      sight.type,
+                      style: const TextStyle(
                         fontFamily: 'Roboto',
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: Color.fromRGBO(59, 62, 91, 1),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
-                    Text(
+                    const Text(
                       'круглосуточно',
                       style: TextStyle(
                         fontFamily: 'Roboto',
@@ -95,9 +97,9 @@ class SightDetails extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                const Text(
-                  'Долина гейзеров — одно из крупнейших гейзерных полей мира, объект Всемирного наследия ЮНЕСКО. Самая известная и при этом самая труднодоступная достопримечательность Камчатки. Чтобы попасть сюда, придется лететь на вертолете, а до поездки получить специальное разрешение, количество которых ограничено. Именно поэтому большинство туристов, ездивших на Камчатку, видели эту уникальную долину только на фото. Ну или в фильме «Земля Санникова», который снимали как раз в этих краях.',
-                  style: TextStyle(
+                Text(
+                  sight.details,
+                  style: const TextStyle(
                     fontFamily: 'Roboto',
                     fontSize: 14,
                     fontWeight: FontWeight.w400,

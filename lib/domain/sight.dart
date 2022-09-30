@@ -1,10 +1,10 @@
 class Sight {
-  late String name; // название достопримечательности
-  late double lat; // координаты места широта
-  late double lon; // координаты места долгота
-  late String url; // путь до фотографии в интернете
-  late String details; // описание достопримечательности
-  late String type; // тип достопримечательности
+  final String name; // название достопримечательности
+  final double lat; // координаты места широта
+  final double lon; // координаты места долгота
+  final String url; // путь до фотографии в интернете
+  final String details; // описание достопримечательности
+  final String type; // тип достопримечательности
 
   Sight({
     required this.name,
