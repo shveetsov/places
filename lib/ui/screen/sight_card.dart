@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
 
 class SightCard extends StatelessWidget {
@@ -9,48 +10,62 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3/2,
+      aspectRatio: 3 / 2,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
         child: Column(
           children: [
             Expanded(
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(sight.url),
+              child: Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: const BoxDecoration(
+                      color: Color.fromRGBO(245, 245, 245, 1),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                      ),
+                    ),
+                    child: Image.network(
+                      sight.url,
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, widget, imageChunkEvent) {
+                        if (imageChunkEvent == null) {
+                          return widget;
+                        }
+                        return const Center(child: CircularProgressIndicator());
+                      },
+                      // при возникновении ошибки
+                      // вместо изображения будет текст Error!
+                      errorBuilder: (context, obj, stacktrace) =>
+                      const Center(child: Text("Ошибка!")),
+                    ),
                   ),
-                  color: const Color.fromRGBO(245, 245, 245, 1),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        sight.type,
-                        style: const TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          sight.type,
+                          style: const TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          'res/icons/heart.svg',
                           color: Colors.white,
                         ),
-                      ),
-                      const Icon(
-                        Icons.favorite_border_outlined,
-                        color: Colors.white,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
             Expanded(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
 
 class SightDetails extends StatelessWidget {
@@ -16,16 +17,26 @@ class SightDetails extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(sight.url),
-                  ),
-                  color: const Color.fromRGBO(245, 245, 245, 1),
-                  borderRadius: const BorderRadius.only(
+                decoration: const BoxDecoration(
+                  //color: Color.fromRGBO(245, 245, 245, 1),
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(10),
                   ),
+                ),
+                child: Image.network(
+                  sight.url,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, widget, imageChunkEvent) {
+                    if (imageChunkEvent == null) {
+                      return widget;
+                    }
+                    return const Center(child: CircularProgressIndicator());
+                  },
+                  // при возникновении ошибки
+                  // вместо изображения будет текст Error!
+                  errorBuilder: (context, obj, stacktrace) =>
+                      const Center(child: Text("Ошибка!")),
                 ),
               ),
               Positioned(
@@ -36,13 +47,14 @@ class SightDetails extends StatelessWidget {
                   child: Container(
                     width: 32,
                     height: 32,
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Icon(
-                      Icons.arrow_back_ios_outlined,
-                      size: 12,
+                    child: SvgPicture.asset(
+                      'res/icons/arrow.svg',
+                      color: const Color.fromRGBO(37, 40, 73, 1),
                     ),
                   ),
                 ),
@@ -124,13 +136,16 @@ class SightDetails extends StatelessWidget {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(Icons.map),
-                      SizedBox(
+                    children: [
+                      SvgPicture.asset(
+                        'res/icons/go.svg',
+                        color: Colors.white,
+                      ),
+                      const SizedBox(
                         width: 10,
                         height: 48,
                       ),
-                      Text(
+                      const Text(
                         'ПОСТРОИТЬ МАРШРУТ',
                         style: TextStyle(
                           fontFamily: 'Roboto',
@@ -172,16 +187,16 @@ class SightDetails extends StatelessWidget {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            Icons.calendar_month_outlined,
-                            color: Color.fromRGBO(124, 126, 146, 0.56),
+                        children: [
+                          SvgPicture.asset(
+                            'res/icons/calendar.svg',
+                            color: const Color.fromRGBO(124, 126, 146, 0.56),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                             height: 40,
                           ),
-                          Text(
+                          const Text(
                             'Запланировать',
                             style: TextStyle(
                               fontFamily: 'Roboto',
@@ -211,16 +226,16 @@ class SightDetails extends StatelessWidget {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            Icons.favorite_border_outlined,
-                            color: Color.fromRGBO(59, 62, 91, 1),
+                        children: [
+                          SvgPicture.asset(
+                            'res/icons/heart.svg',
+                            color: const Color.fromRGBO(59, 62, 91, 1),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                             height: 40,
                           ),
-                          Text(
+                          const Text(
                             'Запланировать',
                             style: TextStyle(
                               fontFamily: 'Roboto',
